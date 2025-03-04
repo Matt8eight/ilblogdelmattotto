@@ -1,0 +1,491 @@
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+    margin: 0;
+}
+
+/* Stili di base */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.8; /* Aumenta lo spazio tra le righe */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    color: #333; /* Colore del testo più tenue */
+    background-image: "Immagini/sfondotexture.png";
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.main-container {
+    width: 100%;
+}
+
+.bg-container {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Altezza fissa per l'immagine blurrata */
+    overflow: hidden;
+}
+
+.bg-image {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    height: 100%; 
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.bg-text {
+    background-color: rgba(0,0,0, 0.4);
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+}
+
+.sidebar {
+    background: #333;
+    color: #fff;
+    width: 50px;
+    padding: 1rem 0;
+    transition: width 0.5s ease;
+    overflow: hidden;
+    position: fixed;
+    height: 100vh;
+    z-index: 99;
+}
+
+.text-image-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.text {
+    width: 100%;
+}
+
+.image {
+    width: 80%;
+    margin-top: 1rem;
+    max-width: 500px;
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+    transition: 0.5s ease;
+}
+
+.image img:hover {
+    transform: scale(1.1);
+    z-index: 0;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    margin: 1rem 0;
+}
+
+.sidebar nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    transition: transform 0.3s ease; /* Aggiunge una transizione per l'effetto di ingrandimento */
+}
+
+.sidebar nav ul li a .icon {
+    margin-right: 0.5rem;
+}
+
+.sidebar nav ul li a .title {
+    display: none;
+}
+
+.sidebar nav ul li a .title {
+    transition: transform 0.3s ease; 
+}
+
+.sidebar nav ul li a .title:hover {
+    transform: scale(1.1); /* Ingrandisce leggermente il testo quando ci passi sopra col mouse */
+}
+
+.content {
+    padding: 1rem;
+    margin-left: 40px;
+    transition: margin-left 0.3s, width 0.3s;
+}
+
+.post, .post-primo {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-radius: 5vh;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.title {
+    visibility: hidden;
+}
+
+/* Media queries per dispositivi mobili */
+@media (max-width: 767px){
+
+    body {
+        font-size: 1rem; /* Dimensione del testo più piccola per i dispositivi mobili */
+    }
+
+    .image {
+        width: 70%;
+        margin: 1rem auto; /* Centra l'immagine orizzontalmente */
+    }
+}
+/* Media queries per schermi più grandi */
+@media (min-width: 1024px) {
+    
+    body {
+        font-size: 1.2rem; /* Dimensione del testo leggermente più grande per i desktop */
+        flex-direction: column; /* Cambia flex-direction a column */
+    }
+
+    .title {
+        visibility: visible;
+        color: white;
+    }
+
+    .sidebar {
+        width: 60px;
+        height: 22rem;
+        position: fixed;
+        top: 60px;
+        border-radius: 0 4vh 4vh 0;
+    }
+
+    .icon {
+        margin-bottom: 0.5vh;
+    }
+
+    .sidebar:hover {
+        width: 180px;
+    }
+
+    .bg-text{
+        font-size: 15rem;
+    }
+    .content {
+        margin-left: 60px;
+        padding: 2rem;
+        margin-top: 60px;
+        width: calc(100% - 90px);
+        max-width: 2500px;
+    }
+
+    .firstt{
+        margin-top: -14vh
+    }
+    .text-image-container {
+        flex-direction: row;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .text {
+        width: 60%;
+        min-width: 600px;
+        flex: 1;
+    }
+
+    .image {
+        width: 40%;
+        margin-top: 0;
+        margin-left: 3.7rem;
+        max-width: 340px;
+        
+    }
+
+    .image img {
+        width: 100%;
+        height: auto;
+        
+    }
+
+    .sidebar:hover + .content {
+        margin-left: 180px;
+    }
+
+    .post {
+        margin-bottom: 3rem;
+        padding: 2rem;
+    }
+
+    .primo {
+        margin-top: 15vh;
+        margin-bottom: 3rem;
+        padding: 2rem;
+    }
+
+    .paragraph{
+        font-size: 0rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 1.5rem;
+    }
+}
+@media (min-width: 768px) and (max-width: 1023px){
+    h2 {
+        font-size: 3.5rem;
+    }
+
+    h3 {
+        font-size: 3rem;
+    }
+
+    p {
+        font-size: 1.5rem;
+    }
+}
+@media (min-width: 1024px) and (max-aspect-ratio: 1/1) {
+
+    h2 {
+        font-size: 6rem;
+    }
+
+    h3 {
+        font-size: 4.5rem;
+    }
+    
+    p {
+        font-size: 3rem;
+    }
+    .text-image-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .text{
+       width: 100%; 
+    }
+    .sidebar{
+        margin-top: 88vh;
+        border-radius: 0;
+    }
+
+    .sidebar:hover{
+        width: 100vw;
+    }
+    .icon{
+        font-size: 1.7vh;
+    }
+    .image{
+        width: 70vw
+    }
+    .image img{
+        width: 70vw
+    }
+
+    .bg-image{
+        height: 30vh
+    }
+
+    .bg-container{
+        height: 30vh
+    }
+}
+@media (min-width: 3840px) {
+    body {
+        font-size: 2rem;
+    }
+
+    .sidebar {
+        width: 230px;
+    }
+
+    .sidebar:hover {
+        width: 500px;
+    }
+
+    .icon {
+        size: 10vh;
+    }
+
+    .content {
+        margin-left: 180px;
+        padding: 4rem;
+        width: calc(100% - 120px);
+    }
+
+    .sidebar:hover + .content {
+        margin-left: 500px;
+        width: calc(100% - 500px);
+    }
+
+    .post {
+        margin-bottom: 6rem;
+        padding: 4rem;
+    }
+
+    h2 {
+        font-size: 4rem;
+    }
+
+    h3 {
+        font-size: 3rem;
+    }
+
+    p {
+        font-size: 2.4rem;
+    }
+}
+
+/* Aggiunta di padding per mantenere la distanza */
+.content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.sidebar:hover + .content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media (max-width: 767px), (max-aspect-ratio: 1/1), (orientation: portrait) {
+    .sidebar {
+        width: 100%;
+        height: 10vh; /* Permette alla sidebar di adattarsi all'altezza del contenuto */
+        position: fixed;
+        bottom: 0; /* Sposta la sidebar in basso */
+        display: flex;
+        justify-content: space-around;
+        backdrop-filter: blur(10px);
+        background-color: rgba(0, 0, 0, 0.5); 
+    }
+
+    .sidebar nav ul {
+        display: flex;
+        flex-direction: row;
+        width: 100vw;
+        justify-content: space-around;
+    }
+
+    .sidebar nav ul li {
+        margin: 0;
+    }
+
+    .sidebar nav ul li a {
+        padding: 0rem; /* Riduce il padding delle icone */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sidebar nav ul li a .icon {
+        margin-bottom: ; /* Spazio tra l'icona e il testo */
+    }
+
+    .sidebar nav ul li a .title {
+        font-size: 0.75rem; /* Dimensione del testo */
+        color: white; /* Colore del testo */
+        display: block;
+        visibility: visible;
+        font-size: 0.75rem; /* Dimensione del testo */
+        color: white; /* Colore del testo */
+        margin-top: 5px;
+    }
+    
+    .content {
+        margin-left: 0;
+        padding-bottom: 90px; /* Aggiungi spazio per la sidebar in basso */
+    }
+
+    .post .image {
+        width: 100%;
+      }
+      
+      .post .image img.full-width-image {
+        width: 100% !important;
+        max-width: none;
+      }
+}
+
+@media (max-width: 500px){
+    header{
+        font-size: 3.5vw;
+    }
+}   
+@media (max-height: 450px) and (orientation: landscape){
+    .sidebar {
+        width: 6vw; /* Imposta la larghezza della sidebar */
+        height: 100vh; /* Imposta l'altezza della sidebar per coprire tutta la finestra */
+        position: fixed;
+        top: 0;
+        left: 0; /* Posiziona la sidebar a sinistra */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Distribuisce le icone uniformemente */
+        padding: 1rem 0;
+        backdrop-filter: blur(10px);
+        background-color: rgba(0, 0, 0, 0.5); 
+    }
+
+    .sidebar nav ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-between; /* Distribuisce le icone uniformemente */
+        height: 80vh; /* Assicura che le icone occupino tutta l'altezza disponibile */
+    }
+
+    .sidebar nav ul li {
+        margin: 0; /* Rimuove il margine tra le icone */
+    }
+
+    .sidebar nav ul li a {
+        padding: 0.5rem; /* Riduce il padding delle icone */
+        max-width: 100%; /* Assicura che le icone non escano fuori dallo schermo */
+        box-sizing: border-box; /* Include padding e bordo nella larghezza totale */
+    }
+
+    .sidebar nav ul li a .icon {
+        max-width: 100%; /* Assicura che le icone non escano fuori dallo schermo */
+        height: auto; /* Mantiene le proporzioni delle icone */
+    }
+
+    .sidebar:hover {
+        width: 6vw; /* Mantiene la larghezza fissa durante l'hover */
+    }
+    .content {
+        margin-left: 60px; /* Aggiungi spazio per la sidebar a sinistra */
+        padding-bottom: 0; /* Rimuovi lo spazio aggiunto per la sidebar in basso */
+    }    
+}
+
+@media (max-width: 500px){
+    p{
+        font-size: 0.9rem;
+    }
+}
